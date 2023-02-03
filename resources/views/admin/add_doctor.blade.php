@@ -23,13 +23,11 @@
         <div class="container" align="center" style="padding-top: 100px;">
 
             @if(session()->has('message'))
-
-            <div class="alert alert-success">
+             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">
-
                 </button>
                 {{ session()->get('message') }}
-            </div>
+             </div>
             @endif
 
             <form action="{{ url('upload_doctor') }}" method="POST" enctype="multipart/form-data">

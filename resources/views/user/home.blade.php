@@ -84,20 +84,20 @@
             </li>
 
             @if(Route::has('login'))
-            @auth
-            <x-app-layout>
-            </x-app-layout>
-            @else
+             @auth
+                <x-app-layout>
+                </x-app-layout>
+             @else
 
-            <li class="nav-item">
+             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login</a>
-            </li>
+             </li>
 
-            <li class="nav-item">
+             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{ route('register') }}">Register</a>
-            </li>
+             </li>
 
-            @endauth
+             @endauth
             @endif
 
           </ul>
@@ -105,6 +105,14 @@
       </div> <!-- .container -->
     </nav>
   </header>
+
+  @if(session()->has('message'))
+       <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">
+        </button>
+        {{ session()->get('message') }}
+       </div>
+   @endif
 
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
     <div class="hero-section">
@@ -173,11 +181,7 @@
 
   <!-- .page-section -->
   @include('user.appoinment')
-  <!-- .page-section -->
 
-  <!-- .banner-home -->
-
-  <!-- .banner-home -->
 
   <footer class="page-footer">
     <div class="container">

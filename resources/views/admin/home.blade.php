@@ -10,9 +10,9 @@
       <!-- partial -->
       @include('admin.navbar')
         <!-- partial -->
-        @include('admin.body')
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    @include('admin.script')
+      @include('admin.body')
+      <!-- container-scroller -->
+      <!-- plugins:js -->
+      @include('admin.script')
   </body>
 </html>
