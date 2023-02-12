@@ -25,9 +25,11 @@ Route::get('/showdoctor', [AdminController::class, 'showdoctor']);
 Route::get('/deletedoctor/{id}', [AdminController::class, 'deletedoctor']);
 Route::get('/updatedoctor/{id}', [AdminController::class, 'updatedoctor']);
 Route::post('/editdoctor/{id}', [AdminController::class, 'editdoctor']);
+Route::get('/emailview/{id}', [AdminController::class, 'emailview']);
+Route::post('/sendemail/{id}', [AdminController::class, 'sendemail']);
 
 
-Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
 Route::post('/appointment', [HomeController::class, 'appointment']);
 Route::get('/myappointment', [HomeController::class, 'myappointment']);
 Route::get('/cancel_appoint/{id}', [HomeController::class, 'cancel_appoint']);

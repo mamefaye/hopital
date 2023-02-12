@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Notifications\SendEmailNotofocation;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Notification;
 
 class AdminController extends Controller
 {
@@ -90,6 +93,30 @@ class AdminController extends Controller
         $doctor->save();
 
         return redirect()->back()->with('message','Doctor edited Succesful!');
+
+    }
+
+    public function emailview($id){
+        $data = Appointment::find($id);
+
+        return view('admin.email_view', compact('data'));
+    }
+
+    public function sendemail(Request $request, $id){
+        $data = Appointment::find($id);
+
+        $details = [
+            'greeting' => $request->greeting,
+            'body' => $request->body,
+            'actiontext' => $request->actiontext,
+            'actionurl' => $request->actionurl,
+            'endpart' => $request->endpart
+        ];
+
+        Notification::send($data, new SendEmailNotofocation($details));
+
+        return redirect()->back()->with('message','Notificartion Send Successful!');
+
 
     }
 }
